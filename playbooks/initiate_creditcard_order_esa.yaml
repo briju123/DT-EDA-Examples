@@ -1,10 +1,8 @@
 ---
-- hosts: localhost
+-
+  hosts: localhost
   name: "easytrade-break"
   tasks:
-
+    
     - name: Call easytrade DB service to apply configuration change
-      shell: >
-        curl -X PUT 'http://console-openshift-console.apps.cluster-clnj8.dynamic.redhatworkshops.io/feature-flag-service/v1/flags/credit_card_meltdown'
-        -H 'Content-Type: application/json'
-        -d '{"enabled": true}'
+      shell: "curl -X PUT '{{dt_easytrade_url}}/feature-flag-service/v1/flags/credit_card_meltdown' -H 'Content-Type: application/json'  -d '{\"enabled\": \"true\"}'"
